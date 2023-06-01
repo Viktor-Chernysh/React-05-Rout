@@ -1,7 +1,7 @@
 import { Link, Header, Container } from './SharedLayout';
 import { Outlet } from 'react-router-dom';
 
-export default function SharedLayout(params) {
+export default function SharedLayout() {
   return (
     <>
       <Container>
