@@ -9,7 +9,7 @@ import {
 
 export default function Home() {
   const [movies, setMovies] = useState(null);
-  console.log(movies);
+  // console.log(movies);
   useEffect(() => {
     const getMovie = async () => {
       try {

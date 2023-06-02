@@ -17,8 +17,8 @@ export default function Movies(params) {
   useEffect(() => {
     if (movieQuery === null) return;
     async function find() {
-      const response = await getMovies(movieQuery);
-      setMovies(response.results);
+      const { results } = await getMovies(movieQuery);
+      setMovies(results);
       reset();
     }
     find();

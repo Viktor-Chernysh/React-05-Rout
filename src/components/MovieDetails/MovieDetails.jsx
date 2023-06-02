@@ -8,18 +8,16 @@ export default function MovieDetails() {
   const [details, setDetails] = useState(null);
   // const [searchParams,
   useEffect(() => {
-    return () => {
+    const getMovie = async () => {
       try {
-        const getMovie = async () => {
-          const response = await fetchMoviesDetails(id);
-          setDetails(response);
-          // console.log(response);
-        };
-        getMovie();
+        const response = await fetchMoviesDetails(id);
+        setDetails(response);
+        // console.log(response);
       } catch (error) {
         console.log(error);
       }
     };
+    getMovie();
   }, [id]);
 
   return (
