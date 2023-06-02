@@ -1,10 +1,13 @@
-import { useMyContext } from 'context/context';
+import { useParams } from 'react-router-dom';
+import { fetchMoviesDetails } from 'fakeAPI';
+import { useState } from 'react';
 
 export default function Cast() {
-  const {
-    credits: { cast },
-  } = useMyContext();
-  console.log(cast);
+  const { id } = useParams();
+  const [cast, setCast] = useState(null);
+
+  fetchMoviesDetails(id).then(data => setCast(data.credits.cast));
+
   return (
     <div>
       {cast &&

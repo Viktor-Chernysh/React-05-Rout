@@ -1,12 +1,25 @@
-import { useMyContext } from 'context/context';
+import { useParams } from 'react-router-dom';
+import { fetchMoviesDetails } from 'fakeAPI';
+import { useEffect, useState } from 'react';
 
 export default function Reviews() {
-  const value = useMyContext();
-  console.log(value?.reviews.results);
+  const { id } = useParams();
+  const [reviews, setReviews] = useState(null);
+  const [spinner, setSpinner] = useState(true);
+  useEffect(() => {
+    fetchMoviesDetails(id).then(data => {
+      setReviews(data.reviews.results);
+      setSpinner(false);
+    });
+  }, [id]);
+
+  console.log(reviews);
   return (
     <div>
-      {value &&
-        value.reviews.results.map(el => (
+      {spinner ? (
+        'loading...'
+      ) : reviews && reviews.length !== 0 ? (
+        reviews.map(el => (
           <div key={el.id}>
             {el.author_details.avatar_path ? (
               <img
@@ -21,7 +34,12 @@ export default function Reviews() {
             )}
             {el.author}
           </div>
-        ))}
+        ))
+      ) : (
+        <p>
+          <b>no reviews</b>
+        </p>
+      )}
     </div>
   );
 }

@@ -9,12 +9,12 @@ import {
 
 export default function Home() {
   const [movies, setMovies] = useState(null);
-
+  console.log(movies);
   useEffect(() => {
     const getMovie = async () => {
       try {
-        const response = await getTrending();
-        setMovies(response?.results);
+        const { results } = await getTrending();
+        setMovies(results);
         // console.log(response);
       } catch (error) {
         console.log(error);
