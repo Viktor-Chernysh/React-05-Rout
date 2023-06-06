@@ -13,7 +13,6 @@ export default function Reviews() {
     });
   }, [id]);
 
-  console.log(reviews);
   return (
     <div>
       {spinner ? (

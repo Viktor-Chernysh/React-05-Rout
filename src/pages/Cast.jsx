@@ -1,13 +1,14 @@
 import { useParams } from 'react-router-dom';
 import { fetchMoviesDetails } from 'fakeAPI';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Cast() {
   const { id } = useParams();
   const [cast, setCast] = useState(null);
 
-  fetchMoviesDetails(id).then(data => setCast(data.credits.cast));
-
+  useEffect(() => {
+    fetchMoviesDetails(id).then(data => setCast(data.credits.cast));
+  }, [id]);
   return (
     <div>
       {cast &&

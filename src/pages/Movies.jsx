@@ -6,27 +6,38 @@ import {
   ProductName,
 } from '../components/FilmList/FilmsList';
 import { getMovies } from 'fakeAPI';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 
-export default function Movies(params) {
+const IMG_URL = 'https://image.tmdb.org/t/p/original/';
+
+export default function Movies() {
   const { handleSubmit, register, reset } = useForm();
-  const [movieQuery, setMovieQuery] = useState(null);
+  // const [movieQuery, setMovieQuery] = useState('');
   const [movies, setMovies] = useState(null);
-  const IMG_URL = 'https://image.tmdb.org/t/p/original/';
+  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const movieQuery = searchParams.get('movie') ?? '';
 
   useEffect(() => {
-    if (movieQuery === null) return;
+    if (movieQuery === '') return;
     async function find() {
       const { results } = await getMovies(movieQuery);
       setMovies(results);
-      reset();
     }
     find();
-  }, [movieQuery, reset]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const writeSearchPrms = e => {
+    const nextParams = e.target.value !== '' ? { movie: e.target.value } : {};
+    setSearchParams(nextParams);
+  };
 
   async function onSubmit(data) {
     if (data.movieToFind === '') return;
-    setMovieQuery(data.movieToFind);
+    const { results } = await getMovies(movieQuery);
+    setMovies(results);
+    reset();
   }
 
   return (
@@ -34,7 +45,9 @@ export default function Movies(params) {
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           {...register('movieToFind')}
+          value={movieQuery}
           placeholder="Enter you request..."
+          onChange={writeSearchPrms}
         />
         <button type="submit">Go</button>
       </form>
@@ -43,7 +56,7 @@ export default function Movies(params) {
           movies.map(movie => {
             return (
               <CardWrapper key={movie.id}>
-                <Link to={`${movie.id}`}>
+                <Link to={`${movie.id}`} state={{ from: location }}>
                   <img
                     src={`${IMG_URL}${movie.poster_path}`}
                     alt=""

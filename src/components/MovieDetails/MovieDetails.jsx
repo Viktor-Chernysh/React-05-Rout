@@ -1,12 +1,15 @@
-import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchMoviesDetails } from 'fakeAPI';
-import dataContext from 'context/context';
 
 export default function MovieDetails() {
   const { id } = useParams();
   const [details, setDetails] = useState(null);
-  // const [searchParams,
+  const location = useLocation();
+  const { current } = useRef(location.state?.from ?? '/movies');
+
+  console.log(current);
+
   useEffect(() => {
     const getMovie = async () => {
       try {
@@ -19,10 +22,12 @@ export default function MovieDetails() {
     };
     getMovie();
   }, [id]);
-
+  // console.log(location);
   return (
     <>
+      <Link to={current}> Go back</Link>
       {details && <div>{details.title}</div>}
+      {details && <div>{details.release_date}</div>}
       <div>
         <ul>
           <li>
@@ -33,9 +38,9 @@ export default function MovieDetails() {
           </li>
         </ul>
       </div>
-      <dataContext.Provider value={details}>
+      <Suspense fallback={<div>LADING Subpages ... </div>}>
         <Outlet />
-      </dataContext.Provider>
+      </Suspense>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getTrending } from 'fakeAPI';
 import {
@@ -9,6 +9,9 @@ import {
 
 export default function Home() {
   const [movies, setMovies] = useState(null);
+  const location = useLocation();
+  // const [id, setId] = useState(null);
+  // const navigate = useNavigate();
   // console.log(movies);
   useEffect(() => {
     const getMovie = async () => {
@@ -22,14 +25,14 @@ export default function Home() {
     };
     getMovie();
   }, []);
-
+  // id && navigate(`movies/${id}`);
   return (
     <Container>
       {movies &&
         movies.map(movie => {
           return (
             <CardWrapper key={movie.id}>
-              <Link to={`movies/${movie.id}`}>
+              <Link to={`movies/${movie.id}`} state={{ from: location }}>
                 <img
                   src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                   alt=""

@@ -1,12 +1,21 @@
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import SharedLayout from './SharedLayout/SharedLayout.jsx';
-import Movies from 'pages/Movies.jsx';
-import MovieDetails from './MovieDetails/MovieDetails.jsx';
-import Home from 'pages/Home.jsx';
-import Cast from 'pages/Cast.jsx';
-import Reviews from 'pages/Reviews.jsx';
+// import MovieDetails from './MovieDetails/MovieDetails.jsx';
+// import Cast from 'pages/Cast.jsx';
+// import Reviews from 'pages/Reviews.jsx';
 import { Button } from '../pages/NotFound.js';
 import { Container } from './SharedLayout/SharedLayout.js';
+const Home = lazy(() => import('pages/Home.jsx'));
+const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout.jsx'));
+const Movies = lazy(() => import('pages/Movies.jsx'));
+const Cast = lazy(() => import('pages/Cast.jsx'));
+const Reviews = lazy(() => import('pages/Reviews.jsx'));
+const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails.jsx'));
+//Для именных экспортов!!!!!!!!!!!!
+// const Home = lazy(() => import('pages/Home.jsx')).then(module => ({
+//   ...module,
+//   default: module.Gallery,
+// }));
 
 const App = () => {
   return (

@@ -1,5 +1,6 @@
-import { Link, Header, Container } from './SharedLayout';
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { Link, Header, Container } from './SharedLayout';
 
 export default function SharedLayout() {
   return (
@@ -15,7 +16,9 @@ export default function SharedLayout() {
 
       <main>
         <Container>
-          <Outlet />
+          <Suspense fallback={<div>Loading---...</div>}>
+            <Outlet />
+          </Suspense>
         </Container>
       </main>
     </>
