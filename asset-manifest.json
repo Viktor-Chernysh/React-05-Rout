@@ -1,13 +1,29 @@
 {
   "files": {
     "main.css": "/React-05-Rout/static/css/main.b5320759.css",
-    "main.js": "/React-05-Rout/static/js/main.687aae00.js",
+    "main.js": "/React-05-Rout/static/js/main.8c08c746.js",
+    "static/js/415.4557cbeb.chunk.js": "/React-05-Rout/static/js/415.4557cbeb.chunk.js",
+    "static/js/907.9aeba354.chunk.js": "/React-05-Rout/static/js/907.9aeba354.chunk.js",
+    "static/js/134.6615a3a2.chunk.js": "/React-05-Rout/static/js/134.6615a3a2.chunk.js",
+    "static/js/493.7d8288b0.chunk.js": "/React-05-Rout/static/js/493.7d8288b0.chunk.js",
+    "static/js/736.ec02a14f.chunk.js": "/React-05-Rout/static/js/736.ec02a14f.chunk.js",
+    "static/js/947.5d520c3c.chunk.js": "/React-05-Rout/static/js/947.5d520c3c.chunk.js",
+    "static/js/279.8663ad47.chunk.js": "/React-05-Rout/static/js/279.8663ad47.chunk.js",
+    "static/js/887.0c8e0168.chunk.js": "/React-05-Rout/static/js/887.0c8e0168.chunk.js",
     "index.html": "/React-05-Rout/index.html",
     "main.b5320759.css.map": "/React-05-Rout/static/css/main.b5320759.css.map",
-    "main.687aae00.js.map": "/React-05-Rout/static/js/main.687aae00.js.map"
+    "main.8c08c746.js.map": "/React-05-Rout/static/js/main.8c08c746.js.map",
+    "415.4557cbeb.chunk.js.map": "/React-05-Rout/static/js/415.4557cbeb.chunk.js.map",
+    "907.9aeba354.chunk.js.map": "/React-05-Rout/static/js/907.9aeba354.chunk.js.map",
+    "134.6615a3a2.chunk.js.map": "/React-05-Rout/static/js/134.6615a3a2.chunk.js.map",
+    "493.7d8288b0.chunk.js.map": "/React-05-Rout/static/js/493.7d8288b0.chunk.js.map",
+    "736.ec02a14f.chunk.js.map": "/React-05-Rout/static/js/736.ec02a14f.chunk.js.map",
+    "947.5d520c3c.chunk.js.map": "/React-05-Rout/static/js/947.5d520c3c.chunk.js.map",
+    "279.8663ad47.chunk.js.map": "/React-05-Rout/static/js/279.8663ad47.chunk.js.map",
+    "887.0c8e0168.chunk.js.map": "/React-05-Rout/static/js/887.0c8e0168.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b5320759.css",
-    "static/js/main.687aae00.js"
+    "static/js/main.8c08c746.js"
   ]
 }
